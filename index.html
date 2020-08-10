@@ -3,68 +3,14 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="index.css">
     </head>
     <body>
-        <script type="text/javascript">
-            //Rock paper scissors game
-            function computerPlay(selection){
-                let play = Math.floor(Math.random() * 3);
-
-                //test computer play
-                console.log(play);
-
-                if(play == 0){ return "Rock"; }
-                else if(play == 1){ return "Paper"; }
-                else { return "Scissors"; }
-            }
-            function playerPlay(selection){
-                return prompt("Rock Paper or Scissors?")
-            }
-            function playRound(gamer, computer){
-                gamer = gamer.toUpperCase();
-                computer = computer.toUpperCase();
-                if(gamer == computer){
-                    console.log("It's a tie!");
-                    return -1;
-                }
-                if(gamer == "ROCK" && computer == "SCISSORS"){
-                    console.log("You Win!");
-                    return 1;
-                }
-                if(gamer == "PAPER" && computer == "SCISSORS"){
-                    console.log("You Lose.");
-                    return 0;
-                }
-                if(gamer == "PAPER" && computer == "ROCK"){
-                    console.log("You Win!");
-                    return 1;
-                }
-                if(gamer == "SCISSORS" && computer == "PAPER"){
-                    console.log("You Win!");
-                    return 1;
-                }
-                if(gamer == "SCISSORS" && computer == "ROCK"){
-                    console.log("You Lose.");
-                    return 0;
-                }
-                if(gamer == "ROCK" && computer == "PAPER"){
-                    console.log("You Lose.");
-                    return 0;
-                }
-            }
-            function game(){
-                let playerScore = 0;
-                let computerScore = 0;
-                let gameRound = 0;
-                for(let i = 0; i < 5; i++){
-                    gameRound = playRound(playerPlay(), computerPlay());
-                    if(gameRound == 1){ playerScore++; }
-                    else if(gameRound == 0){ computerScore++; }
-                }
-                if(playerScore > computerScore) { console.log("You won the game!"); }
-                else if(playerScore < computerScore) { console.log("You lost the game."); }
-                else { console.log("The game was a tie."); }
-            }
-        </script>
+        <div id="playArea">
+            <div id="rock" class="button" style="background:gray">Rock</div>
+            <div id="paper" class="button" style="background:green">Paper</div>
+            <div id="scissors" class="button" style="background:#319DF1">Scissors</div>
+        </div>
+        <script type="text/javascript" src="index.js"></script>
     </body>
 </html>
