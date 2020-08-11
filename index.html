@@ -6,10 +6,29 @@
         <link rel="stylesheet" href="index.css">
     </head>
     <body>
-        <div id="playArea">
-            <div id="rock" class="button" style="background:gray">Rock</div>
-            <div id="paper" class="button" style="background:green">Paper</div>
-            <div id="scissors" class="button" style="background:#319DF1">Scissors</div>
+        <div id="game">
+            <div id="playArea">
+                <div id="rock" class="button" style="background:gray">Rock</div>
+                <div id="paper" class="button" style="background:green">Paper</div>
+                <div id="scissors" class="button" style="background:#319DF1">Scissors</div>
+                <div class="scoreArea">
+                    <div class="score">
+                        <p>Computer Score:</p>
+                        <p id="compScore">0</p>
+                    </div>
+                    <div class="score">
+                        <p>Your Score:</p>
+                        <p id="playerScore">0</p>
+                    </div>
+                    <p>First to 5 wins!</p>
+                </div>
+            </div>
+            <div class="compArea">
+                <div id="compPlay">
+                    <p>The computer played:</p>
+                    <p id="compPlayOut"></p>
+                </div>
+            </div>
         </div>
         <script type="text/javascript" src="index.js"></script>
     </body>

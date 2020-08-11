@@ -1,66 +1,81 @@
 function computerPlay(){
     let play = Math.floor(Math.random() * 3);
-
-    //test computer play
-    console.log(play);
-
-    if(play == 0){ return "ROCK"; }
-    else if(play == 1){ return "PAPER"; }
-    else { return "SCISSORS"; }
+    const compPlay = document.querySelector("#compPlayOut");
+    if(play == 0){
+        compPlay.textContent = "Rock"
+        return "ROCK"; 
+    }
+    else if(play == 1){ 
+        compPlay.textContent = "Paper";
+        return "PAPER"; 
+    }
+    else { 
+        compPlay.textContent = "Scissors";
+        return "SCISSORS"; 
+    }
 }
-function playerPlay(){
+function initPlay(){
     const rock = document.querySelector("#rock");
     const paper = document.querySelector("#paper");
     const scissors = document.querySelector("#scissors");
-    rock.addEventListener('click', playRound("ROCK", computerPlay());
-    paper.addEventListener('click', playRound("PAPER", computerPlay());
-    scissors.addEventListener('click', playRound("SCISSORS", computerPlay());
+    rock.addEventListener('click', () => playRound("ROCK", computerPlay()));
+    paper.addEventListener('click', () => playRound("PAPER", computerPlay()));
+    scissors.addEventListener('click', () => playRound("SCISSORS", computerPlay()));
 }
+function scoreRound(score){
+    const playerScore = document.querySelector("#playerScore");
+    const compScore = document.querySelector("#compScore");
+    let player = parseInt(playerScore.textContent);
+    let comp = parseInt(compScore.textContent);
+    if(score == 1){ 
+        player += 1;
+        playerScore.textContent = player;
+        if(player == 5){ 
+            alert("You Win!");
+            playerScore.textContent = 0;
+            compScore.textContent = 0;
+        return;
+        }
+    }
+    else{ 
+        comp += 1;
+        compScore.textContent = comp;
+        if(comp == 5){ 
+            alert("You Lose.");
+            playerScore.textContent = 0;
+            compScore.textContent = 0;
+        return;
+        }
+    }
+}
+
 function playRound(gamer, computer){
     if(gamer == computer){
-        console.log("It's a tie!");
         return -1;
     }
     if(gamer == "ROCK" && computer == "SCISSORS"){
-        console.log("You Win!");
-        return 1;
+        scoreRound(1);
+        return;
     }
     if(gamer == "PAPER" && computer == "SCISSORS"){
-        console.log("You Lose.");
-        return 0;
+        scoreRound(0);
+        return;
     }
     if(gamer == "PAPER" && computer == "ROCK"){
-        console.log("You Win!");
-        return 1;
+        scoreRound(1);
+        return;
     }
     if(gamer == "SCISSORS" && computer == "PAPER"){
-        console.log("You Win!");
-        return 1;
+        scoreRound(1);
+        return;
     }
     if(gamer == "SCISSORS" && computer == "ROCK"){
-        console.log("You Lose.");
-        return 0;
+        scoreRound(0);
+        return;
     }
     if(gamer == "ROCK" && computer == "PAPER"){
-        console.log("You Lose.");
-        return 0;
+        scoreRound(0);
+        return;
     }
 }
-/*
-func that makes you play 5 rounds and scores it
-
-function game(){
-    let playerScore = 0;
-    let computerScore = 0;
-    let gameRound = 0;
-    for(let i = 0; i < 5; i++){
-        gameRound = playRound(playerPlay(), computerPlay());
-        if(gameRound == 1){ playerScore++; }
-        else if(gameRound == 0){ computerScore++; }
-    }
-    if(playerScore > computerScore) { console.log("You won the game!"); }
-    else if(playerScore < computerScore) { console.log("You lost the game."); }
-    else { console.log("The game was a tie."); }
-}
-*/
-
+initPlay();
